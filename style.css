@@ -1,0 +1,22 @@
+body {
+    background-color: #102A43;
+    color: whitesmoke;
+}
+
+.blue-grey {
+    background-color: #627D98;
+    color: whitesmoke;
+}
+
+.middle-blue-grey {
+    background-color: #334E68;
+}
+
+.img-body {
+    background-color: #F0F4F8;
+}
+
+.list-group-item.active {
+    background-color: #102A43;
+    border-color: #102A43;
+}
