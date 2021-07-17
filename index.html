@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Flask Technical Documentation</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top blue-grey">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Flask Simplified Documentation</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="row pt-5">
+        <nav id="navbar" class="list-group col-lg-4 middle-blue-grey p-4">
+            <header class="display-5 pb-3">Sections</header>
+            <a class="nav-link list-group-item list-group-item-action blue-grey" href="#introduction">Introduction</a>
+            <a class="nav-link list-group-item list-group-item-action blue-grey" href="#installation">Installation</a>
+            <a class="nav-link list-group-item list-group-item-action blue-grey" href="#Quickly_start_an_application">Quickly start an application</a>
+            <a class="nav-link list-group-item list-group-item-action blue-grey" href="#routing">Routing</a>
+            <a class="nav-link list-group-item list-group-item-action blue-grey" href="#redirects_and_errors">Redirects and Errors</a>
+          </nav>
+
+          <main id="main-doc" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="0" class="scrollspy-example col-lg-8 pt-4 px-4 px-lg-5 lh-lg" tabindex="0">
+            <section class="main-section" id="introduction">
+                <header class="display-5">Introduction</header>
+                <div>
+                    <div class="row flex-lg-row-reverse align-items-center g-3 pt-3">
+                      <div class="col-lg-6">
+                        <figure class="figure">
+                            <img src="https://flask.palletsprojects.com/en/2.0.x/_images/flask-logo.png" class="figure-img d-block mx-lg-auto img-fluid img-body" alt="Flask Logo" width="700" height="500" loading="lazy">
+                            <figcaption class="figure-caption text-light text-end">Flask logo gotten from the official website</figcaption>
+                          </figure>
+                      </div>
+                      <div class="col-lg-6">
+                        <p>The “micro” in microframework means Flask aims to keep the core simple but extensible. Flask won’t make many decisions for you, such as what database to use.  Everything else is up to you, so that Flask can be everything you need and nothing you don’t.</p>
+                      </div>
+                    </div>
+                    <p>By default, Flask does not include a database abstraction layer, form validation or anything else where different libraries already exist that can handle that. Instead, Flask supports extensions to add such functionality to your application as if it was implemented in Flask itself. Numerous extensions provide database integration, form validation, upload handling, various open authentication technologies, and more. Flask may be “micro”, but it’s ready for production use on a variety of needs.</p>
+                  </div>
+            </section>
+
+            <section class="main-section" id="installation">
+                <header class="display-5 pb-2">Installation</header>
+
+                <h2>Do you have the latest Python?</h2>
+                <p>Make sure to have or install the latest version of Python; Flask supports Python 3.6 and newer.
+                <em>async</em> support in Flask requires Python 3.7+ for <em>contextvars.ContextVar</em>.</p>
+
+                <h2>Dependencies</h2> 
+                <p> The following will be automatically installed when you install Flask.</p>
+
+                <ul>
+                    <li>Werkzeug</li>
+                    <li>Jinja</li>
+                    <li>MarkupSafe</li>
+                    <li>ItsDangerous</li>
+                    <li>Click</li>
+                </ul>
+
+                <p> The following will not be automatically installed because they are optional dependencies. Flask will detect and use them if you install them.</p>
+
+                <ul>
+                    <li>Blinker</li>
+                    <li>python-dotenv</li>
+                    <li>Watchdog</li>
+                </ul>
+
+                <h2>Virtual environments</h2>
+
+                <p>It is highly recommended that you use a virtual environment to manage the dependencies for your project, both in development and in production. Virtual environments are independent groups of Python libraries, one for each project. Packages installed for one project will not affect other projects or the operating system’s packages.</p>
+
+                <h3>How to create an environment?</h3>
+                <p>Create a folder for your project then create a <em>venv </em>folder within.</p>
+
+                <ul>
+                    <li>macOS/Linux
+                    <code>
+                        <pre>
+                            $ mkdir myproject
+                            $ cd myproject
+                            $ python3 -m venv venv
+                        </pre>
+                    </code>
+                    </li>
+                    <li>Windows
+                        <code> 
+                            <pre>
+                                > mkdir myproject
+                                > cd myproject
+                                > py -3 -m venv venv
+                            </pre>
+                        </code>
+                    </li>
+                </ul>
+
+                <h3>How to activate an environment?</h3>
+                <p>You need to activate the environment before you start working on your project. Activate the environment with this command: </p>
+
+                <ul>
+                    <li>macOS/Linux <br>
+                    <code>
+                        $ . venv/bin/activate
+                    </code>
+                    </li>
+                    <li>Windows <br>
+                        <code>
+                            > venv\Scripts\activate
+                        </code>
+                    </li>
+                </ul>
+
+                <p>Your shell prompt will change to show the name of the activated environment.</p>
+
+                <h2>Finally, you can install Flask</h2>
+                <p>Within the activated environment, use the following command to install Flask:</p>
+
+                <code>$ pip install Flask</code>
+
+                <p>Flask is now installed.</p>
+            </section>
+           
+            <section class="main-section" id="Quickly_start_an_application">
+                <header class="display-5 pb-2">Quickly start an application</header>
+               <p>That eager to start? This section is a good introduction to Flask. Be sure to read the <a href="#installation">Installation</a> before proceeding.</p>
+
+               <h2>A Mini App</h2>
+               <p>It as basic as this: </p>
+               <code>
+                   <pre>
+                    from flask import Flask
+
+                    app = Flask(__name__)
+                    
+                    @app.route("/")
+                    def hello_world():
+                        return "Hello, World!"
+                   </pre>
+               </code>
+               <p>Code explanation</p>
+               <ol>
+                   <li>First we imported the <strong>Flask</strong> class. An instance of this class will be our WSGI application.</li>
+
+                   <li>Next we create an instance of this class. The first argument is the name of the application’s module or package. <code>__name__</code> is a convenient shortcut for this that is appropriate for most cases. This is needed so that Flask knows where to look for resources such as templates and static files.</li>
+
+                   <li>We then use the <strong>route()</strong> decorator to tell Flask what URL should trigger our function.</li>
+
+                   <li>The function returns the message we want to display in the user’s browser. The default content type is HTML, so HTML in the string will be rendered by the browser.</li>
+               </ol>
+
+               <p>Save it as greeting.py or something similar. Make sure to not call your application <strong>flask.py</strong> because this would conflict with Flask itself.</p>
+
+               <p>To run the application, use the <strong>flask</strong> command or <strong>python -m flask</strong>. Before you can do that you need to tell your terminal the application to work with by exporting the <code>FLASK_APP</code> environment variable:</p>
+
+               <ul>
+                   <li> Bash
+                       <code>
+                           <pre>
+                            $ export FLASK_APP=hello
+                            $ flask run
+                             * Running on http://127.0.0.1:5000/
+                           </pre>
+                       </code>
+                   </li>
+
+                   <li> CMD
+                    <code>
+                        <pre>
+                            > set FLASK_APP=hello
+                            > flask run
+                            * Running on http://127.0.0.1:5000/
+                        </pre>
+                    </code>
+                </li>
+
+                <li> Powershell
+                    <code>
+                        <pre>
+                            > $env:FLASK_APP = "hello"
+                            > flask run
+                            * Running on http://127.0.0.1:5000/
+                        </pre>
+                    </code>
+                </li>
+
+               </ul>
+            </section>
+
+            <section class="main-section" id="routing">
+                <header class="display-5 pb-2"> Routing</header>
+               <p>Modern web applications use meaningful URLs to help users. Users are more likely to like a page and come back if the page uses a meaningful URL they can remember and use to directly visit a page.</p>
+
+               <p>Use the <code>route()</code> decorator to bind a function to a URL.</p>
+
+               <code>
+                   <pre>
+                    @app.route('/')
+                    def index():
+                        return 'Index Page'
+                    
+                    @app.route('/hello')
+                    def hello():
+                        return 'Hello, World'
+                   </pre>
+               </code>
+
+               <p>You can do more! You can make parts of the URL dynamic and attach multiple rules to a function.</p>
+            </section>
+
+            <section class="main-section" id="redirects_and_errors">
+                <header class="display-5 pb-2">Redirects and Errors</header>
+                <p>To redirect a user to another endpoint, use the <code>redirect()</code> function; to abort a request early with an error code, use the <code>abort()</code> function:</p>
+
+                <code>
+                    <pre>
+                        from flask import abort, redirect, url_for
+
+                        @app.route('/')
+                        def index():
+                            return redirect(url_for('login'))
+
+                        @app.route('/login')
+                        def login():
+                            abort(401)
+                            this_is_never_executed()
+                    </pre>
+                </code>
+
+                <p>This is a rather pointless example because a user will be redirected from the index to a page they cannot access (401 means access denied) but it shows how that works.</p>
+
+                <p>By default a black and white error page is shown for each error code. If you want to customize the error page, you can use the <code>errorhandler()</code> decorator:</p>
+
+                <code>
+                    <pre>
+                        from flask import render_template
+
+                        @app.errorhandler(404)
+                        def page_not_found(error):
+                            return render_template('page_not_found.html'), 404
+                    </pre>
+                </code>
+
+                <p>Note the <code>404</code> after the <code>render_template()</code> call. This tells Flask that the status code of that page should be 404 which means not found. By default 200 is assumed which translates to: all went well.</p>
+            </section>
+          </main>
+    </div>
+
+    <footer class="mt-auto py-3 blue-grey">
+        <div class="container">
+            <span>Flask Simplified Documentation. Made with 💙 by A3AJAGBE.</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
